@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read (One)</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    .body-container{
+        margin: 0 auto;
+        width: 900px;
+    }
+    .box{
+        border: 2px solid black;
+        width: 400px;
+        margin-bottom: 40px;
+    }
+
+    p,a,h1 { 
+        margin: 20px 10px;
+    }
+    .flex{
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+
+</style>
+<body>
+    <div class="body-container">
+        <div class="flex">
+            <h1>User {{user.id }}</h1>
+            <a href="/">Home</a>
+        </div>
+        <div class="box">
+            <p>Full Name: {{ user.first_name + " " + user.last_name }}</p>
+            <p>Email: {{ user.email }}</p>
+            <p>Created On: {{ user.created_at }}</p>
+            <p>Last Updated On: {{ user.updated_at }}</p>
+        </div>
+
+        <a href="/users/{{ user.id }}/edit">Edit</a> |
+        <a href="/users/{{ user.id }}/delete">Delete</a>
+    </div>
+</body>
+</html>
