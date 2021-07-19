@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Dojos</title>
+</head>
+
+<style>
+    h1{
+        margin-bottom: 30px;
+    }
+    .location{
+        width: 310px;
+        border: 2px solid black;
+        margin-bottom: 20px;
+    }
+
+    .flex{
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .location > a{
+        padding: 10px;
+        color: blue;
+    }
+
+    a {
+        color: blue;
+    }
+
+    .create-btn {
+        box-shadow: black 4px 4px;
+        width: 80px;
+        margin-top: 20px;
+        margin-left: 50px;
+    }
+</style>
+
+<body>
+    <div class="flex container-fluid">
+        <div class="left-col">
+            <h1>New Dojo</h1>
+            <form action="/dojos/create" method="post">
+            Name:
+            <input type="text" name="name"><br>
+            <button class="btn btn-primary btn-sm create-btn">Create</button>
+            </form> 
+        </div>
+
+        <div class="right-col">
+            <h1>All Dojos</h1>
+            <div class="location">
+                {% if all_dojos != None %}
+                    {% for dojo in all_dojos %}
+                        <a href="/dojo/{{ dojo.id }}">{{ dojo.name }}</a><br>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <a href="/ninjas/new">Add Ninja</a>
+        </div>
+    </div>
+</body>
+</html>
